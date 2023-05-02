@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index page</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"/>
+</head>
+<body>
+    <table id="myTable" class="display">
+        <thead>
+        <tr >
+            <th>Id</th>
+            <th>PlayerName</th>
+            <th>No of Players</th>
+            <th>Age of Player</th>
+            <th>Team Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for(let i=0;i<datalength;i++){%>
+            <tr>
+                    <td>
+                        <%= data[i].id%>
+                    </td>
+                    <td>
+                        <%= data[i].teamname %>
+                    </td>
+                    <td>
+                        <%= data[i].noofplayer %>
+                    </td>
+                    <td>
+                        <%= data[i].players[0].pname %>
+                    </td>
+                    <td>
+                        <%= data[i].players[0].age %>
+                    </td>
+            </tr>
+            <%}%>
+        </tbody>
+    </table> <br>
+   
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script>
+$(document).ready(function () {
+$("#myTable").DataTable();
+});
+</script>
+</html>

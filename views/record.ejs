@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index page</title>
+</head>
+<body>
+    <center>
+    <%if(order=='desc'){order='asc'} else{order='desc'}%>
+    <table id="table" border="1" style=" color: rgb(7, 7, 7); background-color:rgba(50, 137, 187, 0.822);">
+        <tr style="width: 60px; height: 60px; color:rgba(0, 196, 170, 0.712); background-color: black;">
+            <th><a href="/record?bond=s_id&order=<%=order%>">Id</a></th>
+            <th><a href="/record?bond=s_fname&order=<%=order%>">First Name</a></th>
+            <th><a href="/record?bond=s_lname&order=<%=order%>">last Name</a></th>
+            <th><a href="/record?bond=s_email&order=<%=order%>">Email</a></th>
+            <th><a href="/record?bond=s_mno&order=<%=order%>">Mobile no</a></th>
+            <th><a href="/record?bond=s_city&order=<%=order%>">City</a></th>
+        </tr>
+
+        <% for(let i=0;i<datal;i++){%>
+            <tr>
+                    <td>
+                        <%= data[i].s_id%>
+                    </td>
+                    <td>
+                        <%= data[i].s_fname %>
+                    </td>
+                    <td>
+                        <%= data[i].s_lname %>
+                    </td>
+                    <td>
+                        <%= data[i].s_email %>
+                    </td>
+                    <td>
+                        <%= data[i].s_mno %>
+                    </td>
+                    <td>
+                        <%= data[i].s_city %>
+                    </td>
+            </tr>
+            <%}%>
+    </table> <br>
+    <%if(order=='desc'){order='asc'} else{order='desc'}%>
+    
+    <% for(i=1;i<=count;i++){%>
+       <button style="width: 45px; height:45px; color: cadetblue; list-style: none; font-size: 20px;"> 
+        <a href="/record?id=<%=i%>&bond=<%=bond_name%>&order=<%=order%>"><%=i%> </a> </button> 
+        <%}%>
+</body>
+</center>
+</html>

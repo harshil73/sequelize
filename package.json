@@ -1,0 +1,26 @@
+{
+  "name": "task_19_4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "app": "nodemon app.js",
+    "otm":"nodemon oneToMany",
+    "mtm":"nodemon manyToMany",
+    "potm":"nodemon polyOneToMany",
+    "pmtm":"nodemon polyManyToMany",
+    "task1":"nodemon task1_5"
+  },
+  "author": "\"harshil lathiya\"",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mysql2": "^3.2.3",
+    "nodemon": "^2.0.22",
+    "sequelize": "^6.31.0",
+    "sequelize-cli": "^6.6.0"
+  }
+}

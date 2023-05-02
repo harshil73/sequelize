@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>this is hello.ejs page</h2>
+
+    <form action="/search" method="get">
+       search here: <input type="text" name="searchvalue"> <br>
+       <input type="submit" value="search">
+    </form>
+   <br> <br>
+   <%let order%>
+   <%if(order=='desc'){order='asc'} else{order='desc'}%>
+    <table border="2px">
+        <th><a href="/pagination?order=<%=order%>">ID</a></th>
+        <th><a href="/pagination?order=<%=order%>">moviename</a></th>
+        <th><a href="/pagination?order=<%=order%>">actors</a></th>
+        <th><a href="/pagination?order=<%=order%>">director</a></th>
+        <%for(i=0;i<data.length;i++){%>
+            <tr>
+            <td><%=data[i].id%></td>
+            <td><%=data[i].movieName%></td>
+            <td><%=data[i].leadActors%></td>
+            <td><%=data[i].director%></td>
+        </tr>
+            <%}%>
+    </table>
+
+    <br>
+    <%for(i=0;i<count;i++){%>
+         <button> <a href="/pagination?id=<%=i+1%>"><%=i+1%></a></button>
+        <%}%>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+</head>
+
+<body>
+
+    <table id="team_table" class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>PlayerName</th>
+                <th>No of Players</th>
+            </tr>
+        </thead>
+
+
+    </table> <br>
+
+
+
+</body>
+</center>
+
+<script>
+    $(document).ready(function () {
+        $('#team_table').DataTable({
+            ajax: 'http://localhost:7766/get_data',
+
+            'processing': true,
+            'serverSide': true,
+            'aaSorting': [], // To prevent initial sorting from server
+            'columns': [
+                { data: 'id' },
+                { data: 'teamname' },
+                { data: 'noofplayer' },
+            ],
+
+        });
+    });
+</script>
+
+</html>

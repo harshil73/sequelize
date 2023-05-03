@@ -23,9 +23,6 @@ const film = require("./models/film")(sequelize, DataTypes, Model);
 const actor = require("./models/actor")(sequelize, DataTypes, Model);
 
 
-
-
-
 actor.belongsToMany(film, {through: "film_actors" },
 );
 film.belongsToMany(actor, { through: "film_actors" });

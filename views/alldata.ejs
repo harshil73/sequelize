@@ -18,15 +18,16 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>PlayerName</th>
+                <th>Team Name</th>
                 <th>No of Players</th>
+                <th>Player Name </th>
+                <th>Player Age </th>
             </tr>
         </thead>
+        <tbody>
 
-
+        </tbody>
     </table> <br>
-
-
 
 </body>
 </center>
@@ -34,8 +35,7 @@
 <script>
     $(document).ready(function () {
         $('#team_table').DataTable({
-            ajax: 'http://localhost:7766/get_data',
-
+            ajax: 'http://localhost:5000/get_data',
             'processing': true,
             'serverSide': true,
             'aaSorting': [], // To prevent initial sorting from server
@@ -43,9 +43,17 @@
                 { data: 'id' },
                 { data: 'teamname' },
                 { data: 'noofplayer' },
-            ],
-
+                { data: 'players[0].pname' },
+                { data: 'players[0].age' }
+            ]
         });
+
+
+        // $('#team_table tbody').on('click', 'tr', function () {
+        //     var data = table.row(this).data();
+        //     alert('You clicked on ' + data[0] + "'s row");
+        // });
+
     });
 </script>
 

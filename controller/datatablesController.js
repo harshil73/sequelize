@@ -1,8 +1,5 @@
 const { Sequelize, DataTypes, Model, Op } = require("sequelize");
-const sequelize = new Sequelize("sequelize_test", "root", "root", {
-    host: "127.0.0.1",
-    dialect: "mysql",
-  });
+let sequelize = require('../database/connection')
 
 const team = require("../models/team")(sequelize,DataTypes,Model);   
 const player = require("../models/player")(sequelize,DataTypes,Model);   

@@ -1,15 +1,11 @@
-
-
-const { Sequelize, DataTypes, Model } = require("sequelize");
-
 const express = require('express');
 const app = express();
-const port = 6566
+const port = 5678
 
 
-const router = require("./routers/manytomanyRoutes");
+const routes = require("./routers/manytomanyRoutes");
 
-app.use(router)
+app.use(routes)
 
 app.listen((port),()=>{
   console.log(`server running on port ${port}`)

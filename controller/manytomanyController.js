@@ -1,17 +1,14 @@
-
 const { Sequelize, DataTypes, Model, Op } = require("sequelize");
 let sequelize = require('../database/connection')
+
 const film = require("../models/film")(sequelize, DataTypes, Model);
 const actor = require("../models/actor")(sequelize, DataTypes, Model);
 
-actor.belongsToMany(
-  film,
-  { through: "film_actors" }
-  //   {
-  //     underscored: true,
-  //   }
-);
-film.belongsToMany(actor, { through: "film_actors" });
+actor.belongsToMany(film,{through: "film_actors"});
+film.belongsToMany(actor,{through: "film_actors"});
+
+
+// console.log(actor,film)
 
 // ADDING THE DATA
 // using ayanc/await
@@ -33,11 +30,10 @@ film.belongsToMany(actor, { through: "film_actors" });
 
 // using then and catch
 const adddata = async(req,res)=>{
-actor
-  .create(
+actor.create(
     {
-      name: "Chris Evans, Ana d Armas",
-      films: [{ name: "Ghosted" }],
+      name: "Guru Datt",
+      films: { name: "kaagaz k phool" },
     },
     {
       include: film,
@@ -52,11 +48,28 @@ actor
   });
 }
 
+
+//  READING THE DATA
+const readdata = async(req, res) => {
+  actor.findAll({
+      include: film,
+    })
+    .then((data) => {
+    //   console.log(data);
+      res.send(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+
+
 // DELETING THE DATA
 const deletedata = async(req, res) => {
 actor.destroy({
     where:{
-        id:31
+        id:3
     }
 },{
     include: film,
@@ -68,19 +81,5 @@ actor.destroy({
   });
 }
 
-//  READING THE DATA
-const readdata = async(req, res) => {
-  actor
-    .findAll({
-      include: film,
-    })
-    .then((data) => {
-    //   console.log(data);
-      res.send(data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
 
 module.exports = {adddata,readdata,deletedata}

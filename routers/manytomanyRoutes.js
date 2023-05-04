@@ -5,8 +5,10 @@ const adddata = require('../controller/manytomanyController').adddata;
 const readdata = require('../controller/manytomanyController').readdata;
 const deletedata = require('../controller/manytomanyController').deletedata;
 
-router.get('/adddata',adddata)
-router.get('/readdata',readdata)
-router.get('/deletedata',deletedata)
+console.log(adddata,readdata,deletedata)
 
-module.exports = router
+router.get('/add',adddata)
+router.get('/read',readdata)
+router.get('/delete',deletedata)
+
+module.exports = router;

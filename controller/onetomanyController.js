@@ -41,4 +41,13 @@ const readdata = async (req, res) => {
     });
 };
 
-module.exports={adddata,readdata}
+
+const updatedata = async (req,res)=>{
+  team.update({teamname: "Europhia", noofplayer:4, players:{ pname: "Zendaya", age: 27}},{
+    include:player
+  },{
+    where:{id:40}
+  })
+}
+
+module.exports={adddata,readdata,updatedata}

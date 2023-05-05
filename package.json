@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "app": "nodemon app.js",
+    "oto": "nodemon oneToOne.js",
     "otm":"nodemon oneToMany",
     "mtm":"nodemon manyToMany",
     "potm":"nodemon polyOneToMany",

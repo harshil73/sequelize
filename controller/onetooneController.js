@@ -1,35 +1,20 @@
-const { Sequelize, DataTypes, Model, Op } = require("sequelize");
-let sequelize = require('../database/connection')
-
-let employee = require("../models/employee")(sequelize, DataTypes, Model);
-let car = require("../models/car")(sequelize, DataTypes, Model);
-
-employee.hasOne(car,{foreignKey:'carId'});
-car.belongsTo(employee,{foreignKey:'carId'});
+const oto_repo_car = require("../repository/otoRepo").car_create_query
+const oto_repo_emp = require("../repository/otoRepo").employee_create_query
+const oto_repo_read = require('../repository/otoRepo').read_query
 
 const adddata = async (req, res) => {
-  car.create({ car_name: "mercedece" }).then((data) => {
-      console.log(data.id);
-      employee
-        .create({ emp_name: "akshil", carId: data.id })
-        .then((data1) => {
-        //   console.log(data1);
-          res.send(data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+  let car = await oto_repo_car({car_name:'land Rover'});
+  console.log(car);
 
-      console.log(data);
-    })
-    .catch((error) => {
-      console.error("Unable to create the table : ", error);
-    });
+  let empl = await oto_repo_emp(car.id);
+  console.log(empl);
+  res.json(empl);
 };
 
 const readdata = async (req, res) => {
-  let data = await car.findAll();
-//   console.log(data);
+  // let data = await employee.findAll({include:car,});
+  let data = await oto_repo_read();
+  //   console.log(data);
   res.send(data);
 };
 

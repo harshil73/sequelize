@@ -27,8 +27,7 @@ film.belongsToMany(actor,{through: "film_actors"});
 // }
 
 
-
-// using then and catch
+// Using then and catch
 const adddata = async(req,res)=>{
 actor.create(
     {
@@ -80,6 +79,5 @@ actor.destroy({
     console.log(err)
   });
 }
-
 
 module.exports = {adddata,readdata,deletedata}

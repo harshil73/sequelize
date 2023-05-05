@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       employee.hasOne(models.car,{foreignKey:'carId'})
     }
   }
-  employee.init({
+  employee.init({ 
     emp_name: DataTypes.STRING,
     carId: DataTypes.INTEGER
   }, {

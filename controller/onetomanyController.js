@@ -13,8 +13,8 @@ team.hasMany(player, {
 
 const adddata = async (req, res) => {
   team
-    .create({ teamname: "Dune", noofplayer:5,
-        players:{ pname: "Timothee Chalamet", age: 25}},{
+    .create({ teamname: "the curious case of benjamine button", noofplayer:7,
+        players:{ pname: "Brad Pitt", age: 44}},{
           include:player
         }
     )

@@ -1,9 +1,9 @@
 // const { Sequelize, DataTypes, Model } = require("sequelize");
 // const sequelize = require("./connection");
-const port = 5000
+
 const express = require("express");
 const app = express();
-
+const port = 5555
 const router = require('./routers/onetooneRoutes')
 
 app.use(router)
